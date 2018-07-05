@@ -1,0 +1,26 @@
+	<div class="col-md-4 col-sm-4 col-xs-4">
+			<form action="<?=$this->config->base_url()?>pagos_tarjeta/checkout" method="POST">
+				<input type="hidden" name="txt_id_pre_pedido_1" value="<?=$key->id?>">
+				<input type="hidden" name="txt_descripcion_1" value="Pedido # <?=$key->id?>">
+				<input type="hidden" name="txt_total_1" value="<?=$key->total?>">
+  <script
+  <?$total= $key->total*100?>
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_test_eoz1V6stqwxiCPwkvu9Ywgoz"
+    data-amount="<?=$total?>"
+    value="Paga con Tarjeta"
+    data-name="Nombre de Empresa"
+    data-description="Pedido # <?=$key->id?>"
+    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+    data-locale="es">
+  </script>
+</form>
+	</div>
+  <div class="col-md-4 col-sm-4 col-xs-4">
+<form  role="form" action="<?php echo $this->config->base_url();?>pagos_tarjeta/pago_paypal" method="POST"  enctype="multipart/form-data">
+        <input type="hidden" name="txt_id_pre_pedido" value="<?=$key->id?>">
+        <input type="hidden" name="txt_descripcion" value="Pedido # <?=$key->id?>">
+        <input type="hidden" name="txt_total" value="<?=$key->total?>">
+    <button type="submit" class="btn btn-default"><img src="<?= $this->config->base_url();?>assets/img/paypal.png" width="150" height="50"></button>
+    </form>
+</div>
